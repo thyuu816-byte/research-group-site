@@ -15,7 +15,7 @@
 
 在 EdgeOne Pages 控制台创建 KV 命名空间，并绑定到本项目：
 
-- 命名空间建议名称：`guestbook-messages`
+- 命名空间建议名称：`guestbook_messages`
 - 绑定变量名：`guestbook_messages`
 
 访客留言会以 `message_时间戳_随机值` 为 Key 保存。进入 EdgeOne Pages 控制台的 KV 存储记录列表即可查看留言 JSON，其中包含昵称、邮箱、留言内容和提交时间。
