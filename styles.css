@@ -33,6 +33,10 @@ body {
   letter-spacing: 0;
 }
 
+body.is-modal-open {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -101,6 +105,14 @@ a {
   line-height: 1.35;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -122,6 +134,55 @@ a {
 .site-nav a.active {
   color: var(--teal-dark);
   background: rgba(36, 107, 106, 0.08);
+}
+
+.language-switch {
+  min-width: 84px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 2px;
+  padding: 3px;
+  color: var(--muted);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(23, 33, 38, 0.06);
+}
+
+.language-switch button {
+  min-width: 32px;
+  height: 30px;
+  padding: 0 7px;
+  color: #405057;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.language-switch button:hover,
+.language-switch button.is-active {
+  color: var(--white);
+  background: var(--teal-dark);
+}
+
+.language-switch button:focus-visible {
+  outline: 3px solid rgba(36, 107, 106, 0.24);
+  outline-offset: 2px;
+}
+
+.language-switch span {
+  color: rgba(93, 106, 112, 0.55);
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .nav-toggle {
@@ -381,13 +442,30 @@ a {
   gap: 10px;
 }
 
-.hero-tags span {
+.hero-tags button {
   padding: 7px 12px;
   color: rgba(255, 255, 255, 0.92);
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 6px;
+  font: inherit;
   font-size: 14px;
+  line-height: 1.7;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.hero-tags button:hover,
+.hero-tags button:focus-visible {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.46);
+}
+
+.hero-tags button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 2px;
 }
 
 .hero-actions {
@@ -1296,6 +1374,210 @@ a {
   margin-top: 0;
 }
 
+.news-copy {
+  min-width: 0;
+}
+
+.news-copy p {
+  max-width: 680px;
+}
+
+.news-card-button {
+  width: 100%;
+  display: block;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.news-card-button strong,
+.news-card-button small {
+  display: block;
+}
+
+.news-card-button strong {
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.35;
+  transition: color 180ms ease;
+}
+
+.news-card-button small {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.news-card-button:hover strong,
+.news-card-button:focus-visible strong {
+  color: var(--teal-dark);
+}
+
+.news-card-button:focus-visible {
+  outline: 3px solid rgba(36, 107, 106, 0.24);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.news-modal[hidden] {
+  display: none !important;
+}
+
+.news-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+.news-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 20, 25, 0.62);
+  backdrop-filter: blur(8px);
+}
+
+.news-modal-panel {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: min(86vh, 900px);
+  overflow-y: auto;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 28px 80px rgba(9, 20, 25, 0.34);
+}
+
+.news-modal-close {
+  position: sticky;
+  top: 16px;
+  left: calc(100% - 54px);
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  margin: 16px 16px -54px auto;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(23, 33, 38, 0.12);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.news-modal-close:focus-visible {
+  outline: 3px solid rgba(36, 107, 106, 0.24);
+  outline-offset: 2px;
+}
+
+.news-modal-header {
+  padding: 34px 38px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.news-modal-header time {
+  color: var(--amber);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.news-modal-header h3 {
+  margin: 10px 0 12px;
+  color: var(--ink);
+  font-size: 28px;
+  line-height: 1.28;
+}
+
+.news-modal-header p {
+  margin: 0;
+  color: #405057;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.graduation-gallery {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  background: #f7faf8;
+}
+
+.graduation-gallery img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+}
+
+.easter-egg-modal[hidden] {
+  display: none !important;
+}
+
+.easter-egg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.easter-egg-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 9, 12, 0.76);
+  backdrop-filter: blur(12px);
+}
+
+.easter-egg-panel {
+  position: relative;
+  width: min(920px, 100%);
+  background: #05090c;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.46);
+}
+
+.easter-egg-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.easter-egg-close:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+.easter-egg-video {
+  width: 100%;
+  max-height: min(78vh, 720px);
+  display: block;
+  border-radius: 8px;
+  background: #000;
+}
+
 .guestbook-section {
   background: #eef3f0;
   border-top: 1px solid var(--line);
@@ -1533,30 +1815,11 @@ a {
   }
 
   .nav-toggle {
-    display: block;
+    display: none;
   }
 
   .site-nav {
-    position: absolute;
-    left: 18px;
-    right: 18px;
-    top: 76px;
     display: none;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-  }
-
-  .site-nav.is-open {
-    display: flex;
-  }
-
-  .site-nav a {
-    padding: 12px 14px;
   }
 
   .hero {
@@ -1623,6 +1886,17 @@ a {
     display: none;
   }
 
+  .language-switch {
+    min-width: 82px;
+    height: 36px;
+  }
+
+  .language-switch button {
+    min-width: 31px;
+    height: 28px;
+    font-size: 12px;
+  }
+
   .hero {
     min-height: 520px;
   }
@@ -1672,7 +1946,7 @@ a {
   }
 
   .team-panel.is-active {
-    max-height: 620px;
+    max-height: none;
   }
 
   .team-panel:not(.is-active) .team-panel-body {
@@ -1681,13 +1955,23 @@ a {
   }
 
   .team-panel-body {
-    height: 542px;
+    height: auto;
     transition: opacity 180ms ease;
   }
 
   .member-roster,
   .team-panel:not(.is-active) .member-roster {
     grid-template-columns: 1fr;
+  }
+
+  .member-roster,
+  .member-roster.is-degree-columns,
+  .member-detail {
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    padding-right: 0;
   }
 
   .degree-member-list {
@@ -1728,6 +2012,26 @@ a {
     gap: 8px;
   }
 
+  .news-modal {
+    padding: 14px;
+  }
+
+  .news-modal-panel {
+    max-height: 88vh;
+  }
+
+  .news-modal-header {
+    padding: 28px 22px 20px;
+  }
+
+  .news-modal-header h3 {
+    font-size: 23px;
+  }
+
+  .graduation-gallery {
+    padding: 12px;
+  }
+
   .guestbook-form {
     padding: 22px 18px;
   }
@@ -1750,8 +2054,18 @@ a {
     padding: 40px 24px;
   }
 
-  .paper-scroll {
-    max-height: 560px;
+  .paper-scroll,
+  .project-scroll {
+    max-height: none !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    padding-right: 0;
+  }
+
+  .publication-column.reveal,
+  .project-column.reveal {
+    opacity: 1;
+    transform: none;
   }
 
   .paper-list li {

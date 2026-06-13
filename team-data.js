@@ -2,17 +2,17 @@ window.teamMembers = {
   current: [
     {
       name: "苏婷",
-      photo: "./assets/team/su-ting.jpg",
+      photo: "./assets/team/su-ting.jpg?v=20260612opt",
       level: "21级硕博研究生",
       degree: "doctoral",
       research: "二维材料的原位力学研究",
       interests: "瑜伽、旅游",
       destination: "在读",
-      contact: "y12232094@mail.ecust.edu.cn",
+      contact: "1654012425@qq.com",
     },
     {
       name: "万拾佳",
-      photo: "./assets/team/wan-yijia.jpg",
+      photo: "./assets/team/wan-yijia.jpg?v=20260612opt",
       level: "22级硕博研究生",
       degree: "doctoral",
       research: "微纳米金属强度力学实验与晶体塑性仿真",
@@ -22,7 +22,7 @@ window.teamMembers = {
     },
     {
       name: "余天昊",
-      photo: "./assets/team/yu-tianhao.jpg",
+      photo: "./assets/team/yu-tianhao.jpg?v=20260612opt",
       level: "24级博士研究生",
       degree: "doctoral",
       research: "高分子功能凝胶材料构筑与多尺度多场耦合机制研究",
@@ -32,7 +32,7 @@ window.teamMembers = {
     },
     {
       name: "张子勤",
-      photo: "./assets/team/zhang-ziqin.jpg",
+      photo: "./assets/team/zhang-ziqin.jpg?v=20260612opt",
       level: "24级硕博研究生",
       degree: "doctoral",
       research: "二维材料的原位力学研究",
@@ -42,7 +42,7 @@ window.teamMembers = {
     },
     {
       name: "尚岩松",
-      photo: "./assets/team/shang-yansong.jpg",
+      photo: "./assets/team/shang-yansong.jpg?v=20260612opt",
       level: "25级硕博研究生",
       degree: "doctoral",
       research: "金属氢损伤",
@@ -52,7 +52,7 @@ window.teamMembers = {
     },
     {
       name: "黄智超",
-      photo: "./assets/team/huang-zhichao.jpg",
+      photo: "./assets/team/huang-zhichao.jpg?v=20260612opt",
       level: "24级硕士研究生",
       degree: "master",
       research: "高铁转向架耐候钢疲劳损伤失效研究",
@@ -62,6 +62,7 @@ window.teamMembers = {
     },
     {
       name: "宋家昌",
+      photo: "./assets/team/song-jiachang.jpg?v=20260612opt",
       level: "24级硕士研究生",
       degree: "master",
       research: "第一性原理计算、电催化",
@@ -71,6 +72,7 @@ window.teamMembers = {
     },
     {
       name: "徐嘉怡",
+      photo: "./assets/team/xu-jiayi.jpg?v=20260612opt",
       level: "25级硕士研究生",
       degree: "master",
       research: "第一性原理计算",
@@ -80,6 +82,7 @@ window.teamMembers = {
     },
     {
       name: "李博通",
+      photo: "./assets/team/li-botong.jpg?v=20260612opt",
       level: "25级硕士研究生",
       degree: "master",
       research: "晶体塑性有限元仿真",
@@ -98,12 +101,13 @@ window.teamMembers = {
     },
     {
       name: "汪增辉",
+      photo: "./assets/team/wang-zenghui.jpg?v=20260612opt",
       level: "25级硕士研究生",
       degree: "master",
-      research: "待补充",
-      interests: "待补充",
+      research: "固态电池的锂枝晶失效模式",
+      interests: "健身、游泳、游戏",
       destination: "在读",
-      contact: "",
+      contact: "276219755@qq.com",
     },
     {
       name: "周一峰",
@@ -118,6 +122,7 @@ window.teamMembers = {
   alumni: [
     {
       name: "王祎珩",
+      photo: "./assets/team/wang-yiheng.jpg?v=20260612opt",
       level: "23级硕士研究生",
       research: "微尺度金属疲劳损伤",
       interests: "骑行、电影、动漫",
@@ -126,7 +131,7 @@ window.teamMembers = {
     },
     {
       name: "吴昊",
-      photo: "./assets/team/wu-hao.jpg",
+      photo: "./assets/team/wu-hao.jpg?v=20260612opt",
       level: "23级硕士研究生",
       research: "第一性原理计算：铁电材料",
       interests: "电影、徒步、音乐",
@@ -135,7 +140,7 @@ window.teamMembers = {
     },
     {
       name: "董亚辉",
-      photo: "./assets/team/dong-yahui.jpg",
+      photo: "./assets/team/dong-yahui.jpg?v=20260612opt",
       level: "23级硕士研究生",
       research: "微纳米合金强度及微组织影响晶体塑性仿真",
       interests: "音乐、电影、游戏",
@@ -144,7 +149,7 @@ window.teamMembers = {
     },
     {
       name: "徐渝京",
-      photo: "./assets/team/xu-yujing.jpg",
+      photo: "./assets/team/xu-yujing.jpg?v=20260612opt",
       level: "23级硕士研究生",
       research: "第一性原理、电催化",
       interests: "游戏、跳舞",
@@ -153,6 +158,7 @@ window.teamMembers = {
     },
     {
       name: "史春浩",
+      photo: "./assets/team/shi-chunhao.jpg?v=20260612shi",
       level: "23级硕士研究生",
       research: "柔性薄膜太阳电池、机械结构强度",
       interests: "游戏、阅读、电影",

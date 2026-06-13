@@ -8,7 +8,7 @@
       name="description"
       content="华东理工大学机械与动力工程学院闫亚宾教授课题组，聚焦材料与结构可靠性、微纳尺度原位实验、功能材料设计与精密实验仪器开发。"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260612pubfix" />
   </head>
   <body>
     <header class="site-header" id="top">
@@ -20,19 +20,26 @@
             <small>ECUST · Reliability & Micro/Nano Mechanics</small>
           </span>
         </a>
-        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" aria-label="主导航">
-          <a href="#about">导师简介</a>
-          <a href="#research">研究方向</a>
-          <a href="#team">团队成员</a>
-          <a href="#publications">论文成果</a>
-          <a href="#news">新闻动态</a>
-          <a href="#guestbook">留言板</a>
-        </nav>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="主导航">
+            <a href="#about">导师简介</a>
+            <a href="#research">研究方向</a>
+            <a href="#team">团队成员</a>
+            <a href="#publications">论文成果</a>
+            <a href="#news">新闻动态</a>
+            <a href="#guestbook">留言板</a>
+          </nav>
+          <div class="language-switch" data-language-toggle aria-label="语言切换">
+            <button class="is-active" type="button" data-lang-option="zh" aria-pressed="true">中</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+          </div>
+          <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -87,9 +94,9 @@
     <main>
       <section class="hero" id="home" aria-label="课题组首页横幅">
         <div class="hero-slider" aria-label="课题组照片轮播">
-          <img src="./assets/hero-group-1.jpg" alt="课题组合影" class="hero-slide is-active" />
-          <img src="./assets/hero-group-2.jpg" alt="学生论文答辩合影" class="hero-slide" />
-          <img src="./assets/hero-group-3.jpg" alt="课题组聚餐合影" class="hero-slide" />
+          <img src="./assets/hero-group-1.jpg?v=20260612opt" alt="课题组合影" class="hero-slide is-active" fetchpriority="high" decoding="async" />
+          <img data-src="./assets/hero-group-2.jpg?v=20260612opt" alt="学生论文答辩合影" class="hero-slide" loading="lazy" decoding="async" />
+          <img data-src="./assets/hero-group-3.jpg?v=20260612opt" alt="课题组聚餐合影" class="hero-slide" loading="lazy" decoding="async" />
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
@@ -99,10 +106,10 @@
             在这里，你可以理解“东西为什么会坏”，也能学习如何让材料、结构与装备更安全、更耐用、更高效。
           </p>
           <div class="hero-tags" aria-label="研究关键词">
-            <span>微纳结构可靠性</span>
-            <span>装备损伤失效</span>
-            <span>AI驱动功能材料</span>
-            <span>电子显微原位实验</span>
+            <button type="button" data-easter-egg-step="0">微纳结构可靠性</button>
+            <button type="button" data-easter-egg-step="1">微纳尺度原位力学实验</button>
+            <button type="button" data-easter-egg-step="2">装备损伤失效</button>
+            <button type="button" data-easter-egg-step="3">AI驱动功能材料</button>
           </div>
           <div class="hero-actions">
             <a class="button primary" href="#research">查看研究方向</a>
@@ -149,7 +156,7 @@
           </div>
           <div class="profile-layout">
             <figure class="profile-photo reveal">
-              <img src="./assets/yan-yabin.jpg" alt="闫亚宾教授照片" />
+              <img src="./assets/yan-yabin.jpg" alt="闫亚宾教授照片" loading="lazy" decoding="async" />
               <figcaption>闫亚宾 教授 · 博士生导师</figcaption>
             </figure>
             <div class="profile-copy reveal">
@@ -233,7 +240,7 @@
           </div>
           <div class="research-grid">
             <article class="research-card reveal">
-              <img src="./assets/research-nano.jpg" alt="扫描电镜下的微纳多孔材料结构" />
+              <img src="./assets/research-nano.jpg?v=20260612opt" alt="扫描电镜下的微纳多孔材料结构" loading="lazy" decoding="async" />
               <div>
                 <span>01</span>
                 <h3>微纳结构设计与可靠性评价</h3>
@@ -243,7 +250,7 @@
               </div>
             </article>
             <article class="research-card reveal">
-              <img src="./assets/research-equipment.jpg" alt="航空发动机叶片近景" />
+              <img src="./assets/research-equipment.jpg?v=20260612opt" alt="航空发动机叶片近景" loading="lazy" decoding="async" />
               <div>
                 <span>02</span>
                 <h3>高端复杂装备损伤失效</h3>
@@ -253,7 +260,7 @@
               </div>
             </article>
             <article class="research-card reveal">
-              <img src="./assets/research-ai.jpg" alt="AI驱动自动化材料发现流程" />
+              <img src="./assets/research-ai.jpg?v=20260612opt" alt="AI驱动自动化材料发现流程" loading="lazy" decoding="async" />
               <div>
                 <span>03</span>
                 <h3>AI驱动功能材料设计</h3>
@@ -263,7 +270,7 @@
               </div>
             </article>
             <article class="research-card reveal">
-              <img src="./assets/research-sem.jpg" alt="电子显微镜与原位实验装置" />
+              <img src="./assets/research-sem.jpg?v=20260612opt" alt="电子显微镜与原位实验装置" loading="lazy" decoding="async" />
               <div>
                 <span>04</span>
                 <h3>微纳尺度精密实验装置</h3>
@@ -520,7 +527,7 @@
               <li>上海市“东方学者”特聘教授人才项目</li>
               <li>上海市自然科学基金面上项目：基于SEM原位激振加载的纳米金属材料高周疲劳失效机理与寿命预测研究</li>
               <li>上海市航天科技创新基金项目：高过载条件下异质复合结构变形与失效特性的模拟研究</li>
-              <li>中国航发北京航空材料研究院项目：Ti<sub>2</sub>AlNb高温合金疲劳、蠕变特性实验研究与模拟分析</li>
+              <li>中国航发北京航空材料研究院项目：Ti2AlNb高温合金疲劳、蠕变特性实验研究与模拟分析</li>
               <li>企业联合技术攻关项目：自升式大型海上平台的抗震能力评估</li>
               <li>企业联合技术攻关项目：电子产品微观焊接结构的损伤失效分析与寿命预测</li>
               <li>中国工程物理研究院合作项目：NiTiNb合金相变的微尺度原位表征实验</li>
@@ -540,23 +547,68 @@
           </div>
           <div class="news-list reveal">
             <article>
+              <time datetime="2026-06">2026.06</time>
+              <button class="news-card-button" type="button" data-news-modal-open>
+                <span>
+                  <strong>恭喜23级五位硕士毕业生顺利毕业</strong>
+                  <small>点击查看毕业合影与祝福。</small>
+                </span>
+              </button>
+            </article>
+            <article>
               <time datetime="2026-05">2026.05</time>
-              <h3>课题组网站上线试运行</h3>
-              <p>网站内容持续整理中，欢迎补充团队照片、组会动态、论文封面和招生通知。</p>
+              <div class="news-copy">
+                <h3>课题组网站上线试运行</h3>
+                <p>网站内容持续整理中，欢迎补充团队照片、组会动态、论文封面和招生通知。</p>
+              </div>
             </article>
             <article>
               <time datetime="2026-03">2026.03</time>
-              <h3>二维薄膜剪切失稳相关研究发表</h3>
-              <p>相关工作发表在 Nature Communications，后续可补充新闻链接与论文图片。</p>
+              <div class="news-copy">
+                <h3>二维薄膜剪切失稳相关研究发表</h3>
+                <p>相关工作发表在 Nature Communications，后续可补充新闻链接与论文图片。</p>
+              </div>
             </article>
             <article>
               <time datetime="2026-01">2026.01</time>
-              <h3>欢迎相关专业同学报考交流</h3>
-              <p>机械、能源动力、储能与新能源、力学、智能制造等方向同学可通过邮箱联系。</p>
+              <div class="news-copy">
+                <h3>欢迎相关专业同学报考交流</h3>
+                <p>机械、能源动力、储能与新能源、力学、智能制造等方向同学可通过邮箱联系。</p>
+              </div>
             </article>
           </div>
         </div>
       </section>
+
+      <div class="news-modal" data-news-modal hidden>
+        <div class="news-modal-backdrop" data-news-modal-close></div>
+        <section
+          class="news-modal-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="graduation-news-title"
+        >
+          <button class="news-modal-close" type="button" data-news-modal-close aria-label="关闭新闻弹窗">×</button>
+          <div class="news-modal-header">
+            <time datetime="2026-06">2026.06</time>
+            <h3 id="graduation-news-title">恭喜23级五位硕士毕业生顺利毕业</h3>
+            <p>恭喜王祎珩、吴昊、董亚辉、徐渝京、史春浩顺利毕业，预祝苏婷顺利毕业！</p>
+          </div>
+          <div class="graduation-gallery" aria-label="毕业合影">
+            <img data-src="./assets/graduation-2026-1.jpg?v=20260612opt" alt="23级硕士毕业生与闫亚宾老师合影" loading="lazy" decoding="async" />
+            <img data-src="./assets/graduation-2026-2.jpg?v=20260612opt" alt="课题组毕业季毛主席像前合影" loading="lazy" decoding="async" />
+            <img data-src="./assets/graduation-2026-3.jpg?v=20260612opt" alt="课题组毕业季校门合影" loading="lazy" decoding="async" />
+          </div>
+        </section>
+      </div>
+
+      <div class="easter-egg-modal" data-easter-egg-modal hidden>
+        <div class="easter-egg-backdrop" data-easter-egg-close></div>
+        <section class="easter-egg-panel" role="dialog" aria-modal="true" aria-label="彩蛋视频">
+          <button class="easter-egg-close" type="button" data-easter-egg-close aria-label="关闭彩蛋视频">×</button>
+          <video class="easter-egg-video" data-easter-egg-video data-src="./assets/easter-egg.mp4?v=20260612lite" controls playsinline preload="none"></video>
+        </section>
+      </div>
 
       <section class="section guestbook-section" id="guestbook">
         <div class="container guestbook-layout">
@@ -567,6 +619,8 @@
           </div>
           <form
             class="guestbook-form reveal"
+            name="visitor-message"
+            method="POST"
             action="#guestbook"
           >
             <p class="form-honeypot">
@@ -607,7 +661,7 @@
             </label>
             <div class="form-actions">
               <p class="form-status" data-form-status aria-live="polite">
-                留言将安全保存至课题组网站后台。
+                留言将发送至课题组网站后台。
               </p>
               <button class="button guestbook-submit" type="submit">提交留言</button>
             </div>
@@ -633,7 +687,7 @@
       </p>
     </footer>
 
-    <script src="./team-data.js"></script>
-    <script src="./script.js"></script>
+    <script src="./team-data.js?v=20260612pubfix"></script>
+    <script src="./script.js?v=20260612pubfix"></script>
   </body>
 </html>
