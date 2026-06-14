@@ -10,9 +10,6 @@ const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
 const heroPrev = document.querySelector("[data-hero-prev]");
 const heroNext = document.querySelector("[data-hero-next]");
 const teamRoot = document.querySelector("[data-team-root]");
-const memberModal = document.querySelector("[data-member-modal]");
-const memberModalContent = document.querySelector("[data-member-modal-content]");
-const memberModalCloseButtons = Array.from(document.querySelectorAll("[data-member-close]"));
 const guestbookForm = document.querySelector(".guestbook-form");
 const languageToggle = document.querySelector("[data-language-toggle]");
 const languageButtons = Array.from(document.querySelectorAll("[data-lang-option]"));
@@ -41,7 +38,6 @@ const languageText = {
   "展开章节导航": "Open section navigation",
   "收起章节导航": "Close section navigation",
   "页面导航": "Page Navigation",
-  "关闭成员详情": "Close member details",
   "首页": "Home",
   "论文与项目": "Publications & Projects",
   "华东理工大学 · 机械与动力工程学院": "East China University of Science and Technology · School of Mechanical and Power Engineering",
@@ -319,7 +315,6 @@ const attributeTranslations = {
       [".section-navigator", "aria-label", "Page section navigation"],
       [".section-nav-toggle", "aria-label", "Open section navigation"],
       [".section-nav-panel", "aria-label", "Section navigation"],
-      [".member-modal-close", "aria-label", "Close member details"],
       [".hero", "aria-label", "Research group homepage hero"],
       [".hero-slider", "aria-label", "Research group photo carousel"],
       [".hero-tags", "aria-label", "Research keywords"],
@@ -358,7 +353,6 @@ const attributeTranslations = {
       [".section-navigator", "aria-label", "页面章节导航"],
       [".section-nav-toggle", "aria-label", "展开章节导航"],
       [".section-nav-panel", "aria-label", "章节导航"],
-      [".member-modal-close", "aria-label", "关闭成员详情"],
       [".hero", "aria-label", "课题组首页横幅"],
       [".hero-slider", "aria-label", "课题组照片轮播"],
       [".hero-tags", "aria-label", "研究关键词"],
@@ -613,6 +607,11 @@ const createDetailItem = (label, value, isEmail = false) => {
 };
 
 const resetTeamDetail = (panel) => {
+  const roster = panel?.querySelector("[data-team-list]");
+  const detail = panel?.querySelector("[data-team-detail]");
+  if (!roster || !detail) return;
+  roster.hidden = false;
+  detail.hidden = true;
   panel.classList.remove("is-viewing-member");
 };
 
@@ -627,9 +626,16 @@ const activateTeamPanel = (group, resetDetails = true) => {
 };
 
 const showMemberDetail = (group, member) => {
-  if (!memberModal || !memberModalContent) return;
+  if (!teamRoot) return;
+  activateTeamPanel(group, false);
+  const panel = teamRoot.querySelector(`[data-team-group="${group}"]`);
+  const roster = panel?.querySelector("[data-team-list]");
+  const detail = panel?.querySelector("[data-team-detail]");
+  const content = detail?.querySelector("[data-team-detail-content]");
+  if (!panel || !roster || !detail || !content) return;
+
   lastFocusedElement = document.activeElement;
-  memberModalContent.replaceChildren();
+  content.replaceChildren();
 
   const hero = document.createElement("div");
   hero.className = "member-detail-hero";
@@ -637,7 +643,6 @@ const showMemberDetail = (group, member) => {
 
   const heading = document.createElement("div");
   const name = document.createElement("h3");
-  name.id = "member-modal-title";
   name.textContent = member.name;
   const level = document.createElement("p");
   level.textContent = member.level || "资料待补充";
@@ -653,21 +658,14 @@ const showMemberDetail = (group, member) => {
     createDetailItem("联系方式", member.contact, true)
   );
 
-  memberModalContent.append(hero, details);
-  applyLanguage(memberModalContent);
-  memberModal.hidden = false;
-  document.body.classList.add("is-modal-open");
-  memberModal.querySelector(".member-modal-close")?.focus();
+  content.append(hero, details);
+  applyLanguage(content);
+  roster.hidden = true;
+  detail.hidden = false;
+  panel.classList.add("is-viewing-member");
+  detail.scrollTop = 0;
+  detail.querySelector("[data-team-back]")?.focus();
 };
-
-const closeMemberModal = () => {
-  if (!memberModal || memberModal.hidden) return;
-  memberModal.hidden = true;
-  document.body.classList.remove("is-modal-open");
-  lastFocusedElement?.focus?.({ preventScroll: true });
-};
-
-memberModalCloseButtons.forEach((button) => button.addEventListener("click", closeMemberModal));
 
 const createMemberCard = (group, member) => {
   const card = document.createElement("button");
@@ -750,6 +748,10 @@ const renderTeam = () => {
       resetTeamDetail(panel);
     });
 
+    panel.querySelector("[data-team-back]")?.addEventListener("click", () => {
+      resetTeamDetail(panel);
+      lastFocusedElement?.focus?.({ preventScroll: true });
+    });
   });
 };
 
@@ -815,8 +817,10 @@ document.addEventListener("keydown", (event) => {
     closeNewsModal();
     return;
   }
-  if (event.key === "Escape" && memberModal && !memberModal.hidden) {
-    closeMemberModal();
+  const openMemberDetail = teamRoot?.querySelector(".team-panel.is-viewing-member");
+  if (event.key === "Escape" && openMemberDetail) {
+    resetTeamDetail(openMemberDetail);
+    lastFocusedElement?.focus?.({ preventScroll: true });
     return;
   }
   if (event.key === "Escape") closeSectionNavigator();

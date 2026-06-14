@@ -299,6 +299,13 @@
               </button>
               <div class="team-panel-body">
                 <div class="member-roster" data-team-list="current"></div>
+                <article class="member-detail" data-team-detail="current" hidden>
+                  <button class="member-back" type="button" data-team-back>
+                    <span aria-hidden="true">←</span>
+                    返回成员列表
+                  </button>
+                  <div data-team-detail-content></div>
+                </article>
               </div>
             </section>
 
@@ -312,24 +319,18 @@
               </button>
               <div class="team-panel-body">
                 <div class="member-roster" data-team-list="alumni"></div>
+                <article class="member-detail" data-team-detail="alumni" hidden>
+                  <button class="member-back" type="button" data-team-back>
+                    <span aria-hidden="true">←</span>
+                    返回成员列表
+                  </button>
+                  <div data-team-detail-content></div>
+                </article>
               </div>
             </section>
           </div>
         </div>
       </section>
-
-      <div class="member-modal" data-member-modal hidden>
-        <div class="member-modal-backdrop" data-member-close></div>
-        <article
-          class="member-modal-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="member-modal-title"
-        >
-          <button class="member-modal-close" type="button" data-member-close aria-label="关闭成员详情">×</button>
-          <div data-member-modal-content></div>
-        </article>
-      </div>
 
       <section class="section section-band" id="publications">
         <div class="container publications-layout">
