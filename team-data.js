@@ -18,7 +18,7 @@ window.teamMembers = {
       research: "微纳米金属强度力学实验与晶体塑性仿真",
       interests: "游戏、阅读",
       destination: "在读",
-      contact: "y30220689@mail.ecust.edu.cn",
+      contact: "available by request",
     },
     {
       name: "余天昊",
