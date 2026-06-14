@@ -1407,6 +1407,8 @@ a {
   display: block;
   padding: 0;
   color: inherit;
+  font: inherit;
+  letter-spacing: 0;
   text-align: left;
   background: transparent;
   border: 0;
@@ -1933,9 +1935,14 @@ a {
   }
 
   .section-nav-toggle {
-    min-width: 68px;
+    width: 36px;
+    min-width: 36px;
     height: 36px;
-    padding: 0 8px;
+    padding: 0;
+  }
+
+  .section-nav-toggle .section-current {
+    display: none;
   }
 
   .hero {
