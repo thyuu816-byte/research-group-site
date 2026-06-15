@@ -18,7 +18,7 @@ window.teamMembers = {
       research: "微纳米金属强度力学实验与晶体塑性仿真",
       interests: "游戏、阅读",
       destination: "在读",
-      contact: "available by request",
+      contact: "Available by request",
     },
     {
       name: "余天昊",
@@ -169,7 +169,7 @@ window.teamMembers = {
     {
       name: "张文雨",
       level: "21级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "游戏、健身",
       destination: "中芯国际集成电路制造（北京）有限公司",
       contact: "1260777400@qq.com",
@@ -201,7 +201,7 @@ window.teamMembers = {
     {
       name: "俞添琛",
       level: "22级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "篮球、健身、网球",
       destination: "中国船舶集团上海船舶研究设计院",
       contact: "tiancheny@foxmail.com",
@@ -217,7 +217,7 @@ window.teamMembers = {
     {
       name: "吴广泽",
       level: "22级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "游戏",
       destination: "远景能源有限公司",
       contact: "1149713989@qq.com",
@@ -225,7 +225,7 @@ window.teamMembers = {
     {
       name: "曾凡明",
       level: "20级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "爬山、音乐",
       destination: "浙江华云科技有限公司",
       contact: "zfm303631@163.com",
@@ -241,7 +241,7 @@ window.teamMembers = {
     {
       name: "杨锐",
       level: "20级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "篮球",
       destination: "湖北武汉选调生",
       contact: "yr1728528725@163.com",
@@ -249,15 +249,15 @@ window.teamMembers = {
     {
       name: "李振凯",
       level: "20级硕士研究生",
-      research: "待补充",
-      interests: "待补充",
+      research: "很神秘",
+      interests: "很神秘",
       destination: "南京航空航天大学读博",
       contact: "lizhenkai@nuaa.edu.cn",
     },
     {
       name: "陈亦楠",
       level: "20级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "网球、旅游、阅读",
       destination: "纳铁福传动系统",
       contact: "Nancycyn@126.com",
@@ -265,7 +265,7 @@ window.teamMembers = {
     {
       name: "金徐洁",
       level: "20级硕士研究生",
-      research: "待补充",
+      research: "很神秘",
       interests: "看剧、追星、旅游",
       destination: "上海联影医疗",
       contact: "katherinejxj@163.com",
@@ -273,8 +273,8 @@ window.teamMembers = {
     {
       name: "许国庆",
       level: "20级硕士研究生",
-      research: "  ",
-      interests: "  ",
+      research: "很神秘",
+      interests: "很神秘",
       destination: "上海凯赛生物技术股份有限公司",
       contact: "358894336@qq.com",
     },
@@ -297,10 +297,10 @@ window.teamMembers = {
     {
       name: "向名芝",
       level: "19级硕士研究生",
-      research: "  ",
-      interests: "  ",
-      destination: "  ",
-      contact: "  ",
+      research: "很神秘",
+      interests: "很神秘",
+      destination: "很神秘",
+      contact: "很神秘",
     },
     {
       name: "李晟",
