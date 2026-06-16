@@ -28,7 +28,7 @@ let currentLanguage = "zh";
 
 const languageText = {
   "闫亚宾教授课题组": "Yan Yabin Research Group",
-  "ECUST · Reliability & Micro/Nano Mechanics": "ECUST · Reliability & Micro/Nano Mechanics",
+  "ECUST · Micro-/Nano- Mechanics & reliability": "ECUST · Micro-/Nano- Mechanics & reliability",
   "导师简介": "PI Profile",
   "研究方向": "Research",
   "团队成员": "People",
@@ -49,7 +49,9 @@ const languageText = {
   "AI驱动功能材料": "AI-Driven Functional Materials",
   "电子显微原位实验": "In-Situ Electron Microscopy",
   "查看研究方向": "View Research",
+  "看新闻动态": "Read News",
   "认识团队成员": "Meet the Team",
+  "课题组新闻": "Group News",
   "发表论文": "Publications",
   "申请/授权发明专利": "Patent Applications / Grants",
   "软件著作权": "Software Copyrights",
@@ -121,6 +123,10 @@ const languageText = {
   "论文成果与科研项目": "Publications and Research Projects",
   "2025-至今": "2025-Present",
   "ResearchGate 主页": "ResearchGate Profile",
+  "恭喜22级硕博研究生万拾佳的论文被Acta Materialia期刊接收！":
+    "Congratulations to Wan Shijia, a 2022 M.S.-Ph.D. track student, whose paper has been accepted by Acta Materialia!",
+  "祝贺万拾佳同学的研究工作被 Acta Materialia 期刊接收。":
+    "Congratulations to Wan Shijia on the acceptance of this research work by Acta Materialia.",
   "恭喜23级五位硕士毕业生顺利毕业": "Congratulations to the Five 2023 Master's Graduates",
   "点击查看毕业合影与祝福。": "View graduation photos and congratulations.",
   "恭喜王祎珩、吴昊、董亚辉、徐渝京、史春浩顺利毕业，预祝苏婷顺利毕业！":
@@ -318,6 +324,7 @@ const attributeTranslations = {
       [".hero", "aria-label", "Research group homepage hero"],
       [".hero-slider", "aria-label", "Research group photo carousel"],
       [".hero-tags", "aria-label", "Research keywords"],
+      [".hero-news-ticker", "aria-label", "Research group news ticker"],
       [".hero-controls", "aria-label", "Homepage photo controls"],
       [".hero-dots", "aria-label", "Select homepage photo"],
       ["[data-hero-prev]", "aria-label", "Previous photo"],
@@ -356,6 +363,7 @@ const attributeTranslations = {
       [".hero", "aria-label", "课题组首页横幅"],
       [".hero-slider", "aria-label", "课题组照片轮播"],
       [".hero-tags", "aria-label", "研究关键词"],
+      [".hero-news-ticker", "aria-label", "课题组新闻滚动栏"],
       [".hero-controls", "aria-label", "首页照片控制"],
       [".hero-dots", "aria-label", "选择首页照片"],
       ["[data-hero-prev]", "aria-label", "上一张照片"],
