@@ -354,7 +354,7 @@ a {
   z-index: 1;
   width: min(1160px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 88px 0 72px;
+  padding: 88px 0 158px;
 }
 
 .eyebrow {
@@ -435,7 +435,7 @@ a {
   left: max(20px, calc((100vw - 1160px) / 2));
   bottom: 30px;
   z-index: 2;
-  width: min(860px, calc(100% - 40px));
+  width: min(760px, calc(100% - 260px));
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
@@ -1289,9 +1289,48 @@ a {
   border-radius: 8px;
 }
 
-.publication-header h3 {
-  margin-top: 0;
+.publication-header {
+  display: grid;
+  gap: 16px;
   margin-bottom: 18px;
+}
+
+.publication-header h3 {
+  margin: 0;
+}
+
+.publication-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.publication-filter button {
+  min-width: 58px;
+  min-height: 34px;
+  padding: 0 12px;
+  color: var(--teal-dark);
+  background: #f5f9f7;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.publication-filter button:hover,
+.publication-filter button.is-active {
+  color: var(--white);
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+}
+
+.publication-filter button:focus-visible {
+  outline: 3px solid rgba(36, 107, 106, 0.24);
+  outline-offset: 2px;
 }
 
 .paper-list {
@@ -1578,6 +1617,19 @@ a {
   line-height: 1.75;
 }
 
+.news-modal-body {
+  display: grid;
+  gap: 14px;
+  padding: 24px 38px 8px;
+}
+
+.news-modal-body p {
+  margin: 0;
+  color: #405057;
+  font-size: 16px;
+  line-height: 1.82;
+}
+
 .graduation-gallery {
   display: grid;
   gap: 14px;
@@ -1590,6 +1642,42 @@ a {
   border-radius: 8px;
   border: 1px solid var(--line);
   background: var(--soft);
+}
+
+.conference-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 18px;
+  background: #f7faf8;
+}
+
+.conference-gallery figure {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.conference-gallery figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.conference-gallery img {
+  width: 100%;
+  height: clamp(240px, 32vw, 420px);
+  object-fit: contain;
+  background: var(--soft);
+}
+
+.conference-gallery figcaption {
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  border-top: 1px solid var(--line);
 }
 
 .easter-egg-modal[hidden] {
@@ -1846,7 +1934,21 @@ a {
   font-size: 14px;
 }
 
-.footer-inner div {
+.footer-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.visitor-counter {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.visitor-counter span {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.footer-links {
   display: flex;
   gap: 18px;
   font-size: 14px;
@@ -1924,11 +2026,15 @@ a {
   }
 
   .hero {
-    min-height: 560px;
+    min-height: 680px;
   }
 
   .hero h1 {
     font-size: 46px;
+  }
+
+  .hero-news-ticker {
+    width: min(620px, calc(100% - 250px));
   }
 
   .profile-layout,
@@ -2209,8 +2315,21 @@ a {
     font-size: 23px;
   }
 
+  .news-modal-body {
+    padding: 20px 22px 6px;
+  }
+
   .graduation-gallery {
     padding: 12px;
+  }
+
+  .conference-gallery {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .conference-gallery img {
+    height: min(68vh, 360px);
   }
 
   .guestbook-form {

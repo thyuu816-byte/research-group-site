@@ -8,7 +8,7 @@
       name="description"
       content="华东理工大学机械与动力工程学院闫亚宾教授课题组，聚焦材料与结构可靠性、微纳尺度原位实验、功能材料设计与精密实验仪器开发。"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260616layoutfix" />
+    <link rel="stylesheet" href="./styles.css?v=20260625news" />
   </head>
   <body>
     <header class="site-header" id="top">
@@ -121,11 +121,13 @@
             <div class="hero-news-track">
               <a href="#news"><time datetime="2026-06">2026.06</time> 恭喜22级硕博研究生万拾佳的论文被Acta Materialia期刊接收！</a>
               <a href="#news"><time datetime="2026-06">2026.06</time> 恭喜23级五位硕士毕业生顺利毕业</a>
+              <a href="#news"><time datetime="2026-05">2026.05</time> 苏婷、万拾佳赴英国格拉斯哥参加 ESIA18-ISSI2026</a>
               <a href="#news"><time datetime="2026-05">2026.05</time> 课题组网站上线试运行</a>
               <a href="#news"><time datetime="2026-03">2026.03</time> 二维薄膜剪切失稳相关研究发表</a>
               <a href="#news"><time datetime="2026-01">2026.01</time> 欢迎相关专业同学报考交流</a>
               <a href="#news" aria-hidden="true" tabindex="-1"><time datetime="2026-06">2026.06</time> 恭喜22级硕博研究生万拾佳的论文被Acta Materialia期刊接收！</a>
               <a href="#news" aria-hidden="true" tabindex="-1"><time datetime="2026-06">2026.06</time> 恭喜23级五位硕士毕业生顺利毕业</a>
+              <a href="#news" aria-hidden="true" tabindex="-1"><time datetime="2026-05">2026.05</time> 苏婷、万拾佳赴英国格拉斯哥参加 ESIA18-ISSI2026</a>
               <a href="#news" aria-hidden="true" tabindex="-1"><time datetime="2026-05">2026.05</time> 课题组网站上线试运行</a>
               <a href="#news" aria-hidden="true" tabindex="-1"><time datetime="2026-03">2026.03</time> 二维薄膜剪切失稳相关研究发表</a>
               <a href="#news" aria-hidden="true" tabindex="-1"><time datetime="2026-01">2026.01</time> 欢迎相关专业同学报考交流</a>
@@ -361,6 +363,18 @@
               <div>
                 <h3>代表性论文</h3>
               </div>
+              <div class="publication-filter" data-publication-filter aria-label="按年份筛选代表性论文">
+                <button class="is-active" type="button" data-paper-filter="all" aria-pressed="true">全部</button>
+                <button type="button" data-paper-filter="2026" aria-pressed="false">2026</button>
+                <button type="button" data-paper-filter="2025" aria-pressed="false">2025</button>
+                <button type="button" data-paper-filter="2024" aria-pressed="false">2024</button>
+                <button type="button" data-paper-filter="2023" aria-pressed="false">2023</button>
+                <button type="button" data-paper-filter="2022" aria-pressed="false">2022</button>
+                <button type="button" data-paper-filter="2021" aria-pressed="false">2021</button>
+                <button type="button" data-paper-filter="2020" aria-pressed="false">2020</button>
+                <button type="button" data-paper-filter="2018" aria-pressed="false">2018</button>
+                <button type="button" data-paper-filter="2016" aria-pressed="false">2016</button>
+              </div>
             </div>
             <ol class="paper-list paper-scroll">
               <li>
@@ -571,10 +585,19 @@
             </article>
             <article>
               <time datetime="2026-06">2026.06</time>
-              <button class="news-card-button" type="button" data-news-modal-open>
+              <button class="news-card-button" type="button" data-news-modal-open="#graduation-news-modal">
                 <span>
                   <strong>恭喜23级五位硕士毕业生顺利毕业</strong>
                   <small>点击查看毕业合影与祝福。</small>
+                </span>
+              </button>
+            </article>
+            <article>
+              <time datetime="2026-05">2026.05</time>
+              <button class="news-card-button" type="button" data-news-modal-open="#conference-news-modal">
+                <span>
+                  <strong>苏婷、万拾佳赴英国格拉斯哥参加第18届工程结构完整性评估国际会议</strong>
+                  <small>点击查看会议现场照片与参会报道。</small>
                 </span>
               </button>
             </article>
@@ -603,7 +626,7 @@
         </div>
       </section>
 
-      <div class="news-modal" data-news-modal hidden>
+      <div class="news-modal" id="graduation-news-modal" data-news-modal hidden>
         <div class="news-modal-backdrop" data-news-modal-close></div>
         <section
           class="news-modal-panel"
@@ -621,6 +644,56 @@
             <img data-src="./assets/graduation-2026-1.jpg?v=20260612opt" alt="23级硕士毕业生与闫亚宾老师合影" loading="lazy" decoding="async" />
             <img data-src="./assets/graduation-2026-2.jpg?v=20260612opt" alt="课题组毕业季毛主席像前合影" loading="lazy" decoding="async" />
             <img data-src="./assets/graduation-2026-3.jpg?v=20260612opt" alt="课题组毕业季校门合影" loading="lazy" decoding="async" />
+          </div>
+        </section>
+      </div>
+
+      <div class="news-modal" id="conference-news-modal" data-news-modal hidden>
+        <div class="news-modal-backdrop" data-news-modal-close></div>
+        <section
+          class="news-modal-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="conference-news-title"
+        >
+          <button class="news-modal-close" type="button" data-news-modal-close aria-label="关闭新闻弹窗">×</button>
+          <div class="news-modal-header">
+            <time datetime="2026-05">2026.05</time>
+            <h3 id="conference-news-title">苏婷、万拾佳赴英国格拉斯哥参加第18届工程结构完整性评估国际会议</h3>
+            <p>2026年5月16日至22日，苏婷、万拾佳赴英国格拉斯哥参加 ESIA18-ISSI2026，并在分会场作学术报告。</p>
+          </div>
+          <div class="news-modal-body">
+            <p>
+              本次会议全称为第18届工程结构完整性评估国际会议暨2026结构完整性国际研讨会，即 18th International Conference on Engineering Structural Integrity Assessment in conjunction with the 2026 International Symposium on Structural Integrity（ESIA18-ISSI2026）。会议在英国斯特拉斯克莱德大学 Technology and Innovation Centre 举行，由英国工程结构完整性论坛（FESI）与中国结构完整性联盟（CSIC）联合组织。
+            </p>
+            <p>
+              会议围绕工程结构完整性评估、疲劳与断裂、蠕变损伤、高温结构部件、氢能装备安全、增材制造结构、残余应力、表面处理与涂层、结构健康监测、人工智能辅助可靠性评价等方向展开，吸引了来自英国、中国、欧洲及其他国家和地区高校、科研机构与工业界的专家学者参会。
+            </p>
+            <p>
+              参会期间，苏婷作题为“Tensile Mechanical Properties and Edge Defect-Driven Degradation in Bilayer Graphene”的分会场报告；万拾佳作题为“Effect of high angle grain boundary on plastic deformation and fracture of micro-bicrystal copper: An in-situ SEM experimental and multiscale simulation study”的分会场报告，展示了课题组在二维材料力学性能和微尺度双晶铜塑性变形与断裂机制方面的近期研究成果。
+            </p>
+          </div>
+          <div class="conference-gallery" aria-label="会议现场照片">
+            <figure>
+              <img data-src="./assets/esia2026-group.jpg?v=20260625" alt="ESIA18-ISSI2026参会人员合影" loading="lazy" decoding="async" />
+              <figcaption>参会人员合影</figcaption>
+            </figure>
+            <figure>
+              <img data-src="./assets/esia2026-su-report.jpg?v=20260625" alt="苏婷作分会场报告" loading="lazy" decoding="async" />
+              <figcaption>苏婷作分会场报告</figcaption>
+            </figure>
+            <figure>
+              <img data-src="./assets/esia2026-wan-report.jpg?v=20260625" alt="万拾佳作分会场报告" loading="lazy" decoding="async" />
+              <figcaption>万拾佳作分会场报告</figcaption>
+            </figure>
+            <figure>
+              <img data-src="./assets/esia2026-reception.jpg?v=20260625" alt="ESIA18-ISSI2026会议交流活动现场" loading="lazy" decoding="async" />
+              <figcaption>会议交流活动现场</figcaption>
+            </figure>
+            <figure>
+              <img data-src="./assets/esia2026-auditorium.jpg?v=20260625" alt="ESIA18-ISSI2026大会报告现场" loading="lazy" decoding="async" />
+              <figcaption>大会报告现场</figcaption>
+            </figure>
           </div>
         </section>
       </div>
@@ -715,6 +788,6 @@
 
     <script src="./team-data.js?v=20260617blank"></script>
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <script src="./script.js?v=20260617people"></script>
+    <script src="./script.js?v=20260625news"></script>
   </body>
 </html>

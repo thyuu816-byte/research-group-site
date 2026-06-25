@@ -13,9 +13,11 @@ const teamRoot = document.querySelector("[data-team-root]");
 const guestbookForm = document.querySelector(".guestbook-form");
 const languageToggle = document.querySelector("[data-language-toggle]");
 const languageButtons = Array.from(document.querySelectorAll("[data-lang-option]"));
-const newsModal = document.querySelector("[data-news-modal]");
-const newsModalOpen = document.querySelector("[data-news-modal-open]");
+const newsModals = Array.from(document.querySelectorAll("[data-news-modal]"));
+const newsModalOpenButtons = Array.from(document.querySelectorAll("[data-news-modal-open]"));
 const newsModalCloseButtons = Array.from(document.querySelectorAll("[data-news-modal-close]"));
+const publicationFilterButtons = Array.from(document.querySelectorAll("[data-paper-filter]"));
+const paperItems = Array.from(document.querySelectorAll(".paper-list li"));
 const easterEggButtons = Array.from(document.querySelectorAll("[data-easter-egg-step]"));
 const easterEggModal = document.querySelector("[data-easter-egg-modal]");
 const easterEggVideo = document.querySelector("[data-easter-egg-video]");
@@ -25,6 +27,7 @@ let heroTimer;
 let lastFocusedElement;
 let easterEggProgress = 0;
 let currentLanguage = "zh";
+let activeNewsModal;
 
 const languageText = {
   "闫亚宾教授课题组": "Yan Yabin Research Group",
@@ -123,6 +126,7 @@ const languageText = {
   "论文成果与科研项目": "Publications and Research Projects",
   "2025-至今": "2025-Present",
   "ResearchGate 主页": "ResearchGate Profile",
+  "全部": "All",
   "恭喜22级硕博研究生万拾佳的论文被Acta Materialia期刊接收！":
     "Congratulations to Wan Shijia, a 2022 M.S.-Ph.D. track student, whose paper has been accepted by Acta Materialia!",
   "祝贺万拾佳同学的研究工作被 Acta Materialia 期刊接收。":
@@ -131,6 +135,23 @@ const languageText = {
   "点击查看毕业合影与祝福。": "View graduation photos and congratulations.",
   "恭喜王祎珩、吴昊、董亚辉、徐渝京、史春浩顺利毕业，预祝苏婷顺利毕业！":
     "Congratulations to Wang Yiheng, Wu Hao, Dong Yahui, Xu Yujing, and Shi Chunhao on their graduation. Best wishes to Su Ting for a successful graduation ahead.",
+  "苏婷、万拾佳赴英国格拉斯哥参加 ESIA18-ISSI2026": "Su Ting and Wan Shijia attended ESIA18-ISSI2026 in Glasgow, UK",
+  "苏婷、万拾佳赴英国格拉斯哥参加第18届工程结构完整性评估国际会议":
+    "Su Ting and Wan Shijia Attended the 18th International Conference on Engineering Structural Integrity Assessment",
+  "点击查看会议现场照片与参会报道。": "View conference photos and the participation report.",
+  "2026年5月16日至22日，苏婷、万拾佳赴英国格拉斯哥参加 ESIA18-ISSI2026，并在分会场作学术报告。":
+    "From May 16 to 22, 2026, Su Ting and Wan Shijia attended ESIA18-ISSI2026 in Glasgow, UK, and delivered session presentations.",
+  "本次会议全称为第18届工程结构完整性评估国际会议暨2026结构完整性国际研讨会，即 18th International Conference on Engineering Structural Integrity Assessment in conjunction with the 2026 International Symposium on Structural Integrity（ESIA18-ISSI2026）。会议在英国斯特拉斯克莱德大学 Technology and Innovation Centre 举行，由英国工程结构完整性论坛（FESI）与中国结构完整性联盟（CSIC）联合组织。":
+    "The conference was the 18th International Conference on Engineering Structural Integrity Assessment in conjunction with the 2026 International Symposium on Structural Integrity, ESIA18-ISSI2026. It was held at the Technology and Innovation Centre of the University of Strathclyde and jointly organized by the UK Forum for Engineering Structural Integrity, FESI, and the China Structural Integrity Consortium, CSIC.",
+  "会议围绕工程结构完整性评估、疲劳与断裂、蠕变损伤、高温结构部件、氢能装备安全、增材制造结构、残余应力、表面处理与涂层、结构健康监测、人工智能辅助可靠性评价等方向展开，吸引了来自英国、中国、欧洲及其他国家和地区高校、科研机构与工业界的专家学者参会。":
+    "The program covered engineering structural integrity assessment, fatigue and fracture, creep damage, high-temperature structural components, hydrogen equipment safety, additive-manufactured structures, residual stress, surface treatment and coatings, structural health monitoring, and AI-assisted reliability assessment. It brought together researchers and industry specialists from the UK, China, Europe, and other regions.",
+  "参会期间，苏婷作题为“Tensile Mechanical Properties and Edge Defect-Driven Degradation in Bilayer Graphene”的分会场报告；万拾佳作题为“Effect of high angle grain boundary on plastic deformation and fracture of micro-bicrystal copper: An in-situ SEM experimental and multiscale simulation study”的分会场报告，展示了课题组在二维材料力学性能和微尺度双晶铜塑性变形与断裂机制方面的近期研究成果。":
+    "During the conference, Su Ting presented Tensile Mechanical Properties and Edge Defect-Driven Degradation in Bilayer Graphene, and Wan Shijia presented Effect of high angle grain boundary on plastic deformation and fracture of micro-bicrystal copper: An in-situ SEM experimental and multiscale simulation study. Their talks shared the group's recent progress in the mechanical properties of two-dimensional materials and the plastic deformation and fracture mechanisms of micro-bicrystal copper.",
+  "参会人员合影": "Group photo of participants",
+  "苏婷作分会场报告": "Su Ting presenting in a technical session",
+  "万拾佳作分会场报告": "Wan Shijia presenting in a technical session",
+  "会议交流活动现场": "Conference exchange event",
+  "大会报告现场": "Plenary session",
   "课题组网站上线试运行": "Research Group Website Soft Launch",
   "网站内容持续整理中，欢迎补充团队照片、组会动态、论文封面和招生通知。":
     "Website content is still being organized. Team photos, meeting updates, paper covers, and admission notices are welcome.",
@@ -329,6 +350,7 @@ const attributeTranslations = {
       [".hero-news-ticker", "aria-label", "Research group news ticker"],
       [".hero-controls", "aria-label", "Homepage photo controls"],
       [".hero-dots", "aria-label", "Select homepage photo"],
+      [".publication-filter", "aria-label", "Filter selected publications by year"],
       ["[data-hero-prev]", "aria-label", "Previous photo"],
       ["[data-hero-next]", "aria-label", "Next photo"],
       ["[data-hero-dot='0']", "aria-label", "Show photo 1"],
@@ -349,6 +371,12 @@ const attributeTranslations = {
       [".graduation-gallery img:nth-child(1)", "alt", "The 2023 master's graduates with Prof. Yabin Yan"],
       [".graduation-gallery img:nth-child(2)", "alt", "Research group graduation photo in front of the Mao Zedong statue"],
       [".graduation-gallery img:nth-child(3)", "alt", "Research group graduation photo at the university gate"],
+      [".conference-gallery", "aria-label", "Conference photos"],
+      [".conference-gallery figure:nth-child(1) img", "alt", "Group photo of ESIA18-ISSI2026 participants"],
+      [".conference-gallery figure:nth-child(2) img", "alt", "Su Ting presenting in a technical session"],
+      [".conference-gallery figure:nth-child(3) img", "alt", "Wan Shijia presenting in a technical session"],
+      [".conference-gallery figure:nth-child(4) img", "alt", "ESIA18-ISSI2026 conference exchange event"],
+      [".conference-gallery figure:nth-child(5) img", "alt", "ESIA18-ISSI2026 plenary session"],
     ],
   },
   zh: {
@@ -368,6 +396,7 @@ const attributeTranslations = {
       [".hero-news-ticker", "aria-label", "课题组新闻滚动栏"],
       [".hero-controls", "aria-label", "首页照片控制"],
       [".hero-dots", "aria-label", "选择首页照片"],
+      [".publication-filter", "aria-label", "按年份筛选代表性论文"],
       ["[data-hero-prev]", "aria-label", "上一张照片"],
       ["[data-hero-next]", "aria-label", "下一张照片"],
       ["[data-hero-dot='0']", "aria-label", "显示第1张照片"],
@@ -388,6 +417,12 @@ const attributeTranslations = {
       [".graduation-gallery img:nth-child(1)", "alt", "23级硕士毕业生与闫亚宾老师合影"],
       [".graduation-gallery img:nth-child(2)", "alt", "课题组毕业季毛主席像前合影"],
       [".graduation-gallery img:nth-child(3)", "alt", "课题组毕业季校门合影"],
+      [".conference-gallery", "aria-label", "会议现场照片"],
+      [".conference-gallery figure:nth-child(1) img", "alt", "ESIA18-ISSI2026参会人员合影"],
+      [".conference-gallery figure:nth-child(2) img", "alt", "苏婷作分会场报告"],
+      [".conference-gallery figure:nth-child(3) img", "alt", "万拾佳作分会场报告"],
+      [".conference-gallery figure:nth-child(4) img", "alt", "ESIA18-ISSI2026会议交流活动现场"],
+      [".conference-gallery figure:nth-child(5) img", "alt", "ESIA18-ISSI2026大会报告现场"],
     ],
   },
 };
@@ -486,24 +521,57 @@ languageToggle?.addEventListener("click", (event) => {
   applyLanguage();
 });
 
-const openNewsModal = () => {
-  if (!newsModal) return;
+const getOpenNewsModal = () => activeNewsModal || newsModals.find((modal) => !modal.hidden);
+
+const openNewsModal = (modal) => {
+  if (!modal) return;
   lastFocusedElement = document.activeElement;
-  loadDeferredMedia(newsModal);
-  newsModal.hidden = false;
+  activeNewsModal = modal;
+  loadDeferredMedia(modal);
+  modal.hidden = false;
   document.body.classList.add("is-modal-open");
-  newsModal.querySelector(".news-modal-close")?.focus();
+  modal.querySelector(".news-modal-close")?.focus();
 };
 
-const closeNewsModal = () => {
-  if (!newsModal || newsModal.hidden) return;
-  newsModal.hidden = true;
+const closeNewsModal = (modal = getOpenNewsModal()) => {
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  if (activeNewsModal === modal) activeNewsModal = undefined;
   document.body.classList.remove("is-modal-open");
   lastFocusedElement?.focus?.();
 };
 
-newsModalOpen?.addEventListener("click", openNewsModal);
-newsModalCloseButtons.forEach((button) => button.addEventListener("click", closeNewsModal));
+newsModalOpenButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.dataset.newsModalOpen
+      ? document.querySelector(button.dataset.newsModalOpen)
+      : newsModals[0];
+    openNewsModal(modal);
+  });
+});
+
+newsModalCloseButtons.forEach((button) => {
+  button.addEventListener("click", () => closeNewsModal(button.closest("[data-news-modal]")));
+});
+
+const setPublicationFilter = (year) => {
+  paperItems.forEach((item) => {
+    const itemYear = item.querySelector(".paper-year")?.textContent.trim();
+    item.hidden = year !== "all" && itemYear !== year;
+  });
+
+  publicationFilterButtons.forEach((button) => {
+    const isActive = button.dataset.paperFilter === year;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+};
+
+publicationFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => setPublicationFilter(button.dataset.paperFilter || "all"));
+});
+
+setPublicationFilter("all");
 
 const openEasterEggModal = () => {
   if (!easterEggModal) return;
@@ -832,8 +900,9 @@ document.addEventListener("keydown", (event) => {
     closeEasterEggModal();
     return;
   }
-  if (event.key === "Escape" && newsModal && !newsModal.hidden) {
-    closeNewsModal();
+  const openNews = getOpenNewsModal();
+  if (event.key === "Escape" && openNews) {
+    closeNewsModal(openNews);
     return;
   }
   const openMemberDetail = teamRoot?.querySelector(".team-panel.is-viewing-member");
