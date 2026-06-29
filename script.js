@@ -126,7 +126,7 @@ const languageText = {
   "论文成果与科研项目": "Publications and Research Projects",
   "2025-至今": "2025-Present",
   "ResearchGate 主页": "ResearchGate Profile",
-  "全部": "All",
+  "2021及以前": "2021 and Earlier",
   "恭喜22级硕博研究生万拾佳的论文被Acta Materialia期刊接收！":
     "Congratulations to Wan Shijia, a 2022 M.S.-Ph.D. track student, whose paper has been accepted by Acta Materialia!",
   "祝贺万拾佳同学的研究工作被 Acta Materialia 期刊接收。":
@@ -557,7 +557,8 @@ newsModalCloseButtons.forEach((button) => {
 const setPublicationFilter = (year) => {
   paperItems.forEach((item) => {
     const itemYear = item.querySelector(".paper-year")?.textContent.trim();
-    item.hidden = year !== "all" && itemYear !== year;
+    const isOlderGroup = year === "2021-earlier" && Number(itemYear) <= 2021;
+    item.hidden = !isOlderGroup && itemYear !== year;
   });
 
   publicationFilterButtons.forEach((button) => {
@@ -568,10 +569,10 @@ const setPublicationFilter = (year) => {
 };
 
 publicationFilterButtons.forEach((button) => {
-  button.addEventListener("click", () => setPublicationFilter(button.dataset.paperFilter || "all"));
+  button.addEventListener("click", () => setPublicationFilter(button.dataset.paperFilter || "2026"));
 });
 
-setPublicationFilter("all");
+setPublicationFilter("2026");
 
 const openEasterEggModal = () => {
   if (!easterEggModal) return;
@@ -662,7 +663,7 @@ const createMemberAvatar = (member, large = false) => {
   return avatar;
 };
 
-const createDetailItem = (label, value, isEmail = false) => {
+const createDetailItem = (label, value) => {
   const wrapper = document.createElement("div");
   wrapper.className = "member-detail-item";
 
@@ -671,14 +672,7 @@ const createDetailItem = (label, value, isEmail = false) => {
   wrapper.appendChild(term);
 
   const description = document.createElement("dd");
-  if (isEmail && value) {
-    const link = document.createElement("a");
-    link.href = `mailto:${value}`;
-    link.textContent = value;
-    description.appendChild(link);
-  } else {
-    description.textContent = value || "待补充";
-  }
+  description.textContent = value || "待补充";
   wrapper.appendChild(description);
 
   return wrapper;
